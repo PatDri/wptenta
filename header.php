@@ -20,12 +20,11 @@
       </button>
       <div class="container">
         <a class="navbar-brand" href="<?php echo bloginfo ('url'); ?>">Vår reseblogg</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <?php
             wp_nav_menu(array(
               'theme_location'        =>'header-menu',
-              'container'             =>'div',
-              'container_class'       =>'collapse navbar-collapse',
-              'container_id'          =>'navbarNavDropdown',
+              'container'             => false,
               'menu_class'            =>'navbar-nav',
               'fallback_cb'           =>'__return_false',
               'items_wrap'            =>'<ul id="%1$s" class="%2$s ml-auto mr-auto">%3$s</ul>',
@@ -33,10 +32,11 @@
               'walker'                =>new bootstrap_4_walker_nav_menu(),
             ));
           ?>
-        </div>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <form class="form-inline my-2 my-lg-0" role="search" method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="s" id="s">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
+        </div>
+      </div>
       </nav><!-- / .navbar navbar -->
     </div>
